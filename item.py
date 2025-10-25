@@ -1,25 +1,17 @@
 import apiRequests
-import requests
 
 endpoint = "/products"
 data = ""
 
-
+#try:
 thisRequest = apiRequests.request(endpoint)
 
-data = thisRequest.content
-print(data)
+data = thisRequest.json()
+firstItem = data[0]
 
-"""
-dictt = {
-    "Name": 1,
-    "ItemType": "Guitar",
-    "Price": 1.99,
-}cl
-
-
-
-def NewItem():
-    print("Hello")
-
-"""
+for k, v in firstItem.items():
+    print(k +" : " + str(v))
+    
+print(type(data))
+#except Exception:
+print("Failed")
