@@ -1,18 +1,14 @@
+import apiRequests
 import requests
-import json
-
-url = "https://www.guitarguitar.co.uk"
 
 endpoint = "/products"
+data = ""
 
-try:
-    thisRequest = requests.get(url + endpoint)
-    data = thisRequest.text()
 
-    print(data)
-except ValueError:
-    print("Not json bro")
+thisRequest = apiRequests.request(endpoint)
 
+data = thisRequest.content
+print(data)
 
 """
 dictt = {
