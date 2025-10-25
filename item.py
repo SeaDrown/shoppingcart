@@ -1,29 +1,17 @@
-import requests
-import json
-
-url = "https://www.guitarguitar.co.uk"
+import apiRequests
 
 endpoint = "/products"
+data = ""
 
-try:
-    thisRequest = requests.get(url + endpoint)
-    data = thisRequest.text()
+#try:
+thisRequest = apiRequests.request(endpoint)
 
-    print(data)
-except ValueError:
-    print("Not json bro")
+data = thisRequest.json()
+firstItem = data[0]
 
-
-"""
-dictt = {
-    "Name": 1,
-    "ItemType": "Guitar",
-    "Price": 1.99,
-}cl
-
-
-
-def NewItem():
-    print("Hello")
-
-"""
+for k, v in firstItem.items():
+    print(k +" : " + str(v))
+    
+print(type(data))
+#except Exception:
+print("Failed")
