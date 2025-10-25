@@ -13,6 +13,11 @@ def NewItem(sku):
         print("Request Failed")
         return None
     itemJson = itemResponse.json()
+
+    if len(itemJson) <= 0:
+        print("Params return nothing")
+        return None
+    
     itemDict = itemJson[0]
     item = itemDict
     if itemDict["Category"] == "GUEG_1": #for guitars
