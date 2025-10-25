@@ -5,7 +5,6 @@ endpoint = "/products"
 def NewItem(sku):
     item = dict()
 
-    item["SKU"] = sku
     itemResponse = apiRequests.request(endpoint, {"SKU_ID": sku})
     
 
@@ -18,15 +17,17 @@ def NewItem(sku):
         print("Params return nothing")
         return None
     
-    itemDict = itemJson[0]
-    item = itemDict
-    if itemDict["Category"] == "GUEG_1": #for guitars
-        item["Name"] = itemDict["ItemName"]
-        item["Price"] = itemDict["SalesPrice"]
-        item["Category"] =  itemDict["Category"]
-        item["Brand Name"] = itemDict["BrandName"]
-        item["Rating"] = itemDict["Rating"]
-        item["Quantity in stock"] = itemDict["QtyInStock"]
+
+    for i in itemJson:
+        itemDict = i
+        if itemDict["SKU_ID"] == sku:
+            item["SKU ID"] = sku
+            item["Name"] = itemDict["ItemName"]
+            item["Price"] = itemDict["SalesPrice"]
+            item["Category"] =  itemDict["Category"]
+            item["Brand Name"] = itemDict["BrandName"]
+            item["Rating"] = itemDict["Rating"]
+            item["Quantity in stock"] = itemDict["QtyInStock"]
     return item
 
 def PrintItem(item):
@@ -38,7 +39,7 @@ def PrintItem(item):
     print("Quantity in stock : " + item["Quantity in stock"])
     print("Rating : " + item["Rating"])
 
-thisItem = NewItem(220302382185027)
+thisItem = NewItem("190319340844008")
 print(thisItem)
 
 
