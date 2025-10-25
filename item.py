@@ -30,7 +30,7 @@ def NewItem(sku):
             item["Quantity in stock"] = itemDict["QtyInStock"]
     return item
 
-def PrintItem(item):
+def PrintItem(item): # for debugging
     print("SKU : "+ str(item["SKU"]))
     print("Category : "+ str(item["Category"]))
     print("Name : " + item["Name"])
@@ -39,8 +39,7 @@ def PrintItem(item):
     print("Quantity in stock : " + item["Quantity in stock"])
     print("Rating : " + item["Rating"])
 
-thisItem = NewItem("190319340844008")
-print(thisItem)
+#thisItem = NewItem("180831331985008")
 
 
 
